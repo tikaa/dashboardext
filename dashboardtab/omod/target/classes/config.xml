@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module configVersion="1.2">
+
+	<!-- Module Properties -->
+	<id>dashboardtab</id>
+	<name>Dashboard Tab Module</name>
+	<version>1.0</version>
+	<package>org.openmrs.module.dashboardtab</package>
+	<author>awanthika</author>
+	<description>
+		add a dashboard tab to the patient dashboard
+	</description>
+	<updateURL>https://modules.openmrs.org/modules/download/dashboardtab/update.rdf</updateURL>
+	<require_version>1.9.0</require_version>
+	<!-- / Module Properties -->
+
+	
+	<!-- Module Activator -->
+	<activator>org.openmrs.module.dashboardtab.DashboardTabActivator</activator>
+	
+	
+	<!-- Adds link to admin page -->
+	<extension>
+		<point>org.openmrs.admin.list</point>
+		<class>org.openmrs.module.dashboardtab.extension.html.AdminList</class>
+	</extension>
+	
+	<!-- Maps hibernate file's, if present -->
+	<mappingFiles>
+				
+		DashboardTab.hbm.xml
+				
+	</mappingFiles>
+
+	<!-- Internationalization -->
+	<!-- All message codes should start with dashboardtab. -->
+	<messages>
+		<lang>en</lang>
+		<file>messages.properties</file>
+	</messages>
+	<messages>
+		<lang>fr</lang>
+		<file>messages_fr.properties</file>
+	</messages>
+	<messages>
+		<lang>es</lang>
+		<file>messages_es.properties</file>
+	</messages>
+	<!-- /Internationalization -->
+
+    <extension> <point>org.openmrs.patientDashboardTab</point> <class>@MODULE_PACKAGE@.extension.html.DashboardTabForID</class> </extension>
+
+    <extension>
+        <point>org.openmrs.gutter.tools</point>
+        <class>org.openmrs.module.dashboardtab.extension.html.GutterListExt</class>
+    </extension>
+</module>
+
